@@ -116,4 +116,3 @@ export PATH="$(brew --prefix)/opt/python@3/libexec/bin:$PATH"
 [ -f "/home/jan/.ghcup/env" ] && . "/home/jan/.ghcup/env" # ghcup-env
 export JAVA_HOME=`/usr/libexec/java_home -v 1.21`
 
-export PATH=$PATH:/home/jan/.spicetify
