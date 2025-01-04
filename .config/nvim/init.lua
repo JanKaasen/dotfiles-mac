@@ -334,6 +334,7 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
       vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
       vim.keymap.set('n', '<leader>sq', builtin.quickfix, { desc = '[S]earch [Q]uickfix' })
+      vim.keymap.set('n', '<leader>st', vim.cmd.TodoTelescope, { desc = '[S]earch [Q]uickfix' })
       vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
 
       -- Slightly advanced example of overriding default behavior and theme
@@ -933,6 +934,7 @@ require('lspconfig').ruff.setup {}
 
 --Lua ls
 require('lspconfig').lua_ls.setup {}
+
 -- Half page jump bindings
 vim.keymap.set('n', '<C-d>', '<C-d>zz')
 vim.keymap.set('n', '<C-u>', '<C-u>zz')
@@ -940,25 +942,29 @@ vim.keymap.set('n', '<C-u>', '<C-u>zz')
 -- Open explorer
 vim.keymap.set('n', '<leader>pv', vim.cmd.Ex)
 -- Substitute
-vim.keymap.set('n', '<leader>g', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+vim.keymap.set('n', '<leader>ga', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = 'Substitute all no confirm' })
+vim.keymap.set('n', '<leader>gc', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = 'Substitute all confirm' })
 
 --Yank to clipboard
-vim.keymap.set({ 'n', 'v' }, '<leader>y', [["+y]])
-vim.keymap.set('n', '<leader>Y', [["+Y]])
+vim.keymap.set({ 'n', 'v' }, '<leader>y', [["+y]], { desc = 'Yank to clipboard' })
+vim.keymap.set('n', '<leader>Y', [["+Y]], { desc = 'Yank line to clipboard' })
 
 -- delete without registry
 vim.keymap.set({ 'n', 'v' }, '<leader>d', [["_d]])
 
 -- Move text maps
-vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv")
-vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv")
+vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv", { desc = 'Move text up' })
+vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv", { desc = 'Move text down' })
 
 -- Search in middle
 vim.keymap.set('n', 'n', 'nzzzv')
 vim.keymap.set('n', 'N', 'Nzzzv')
 
 -- quick fix binds
-vim.keymap.set('n', '<C-k>', '<cmd>cnext<CR>zz')
-vim.keymap.set('n', '<C-j>', '<cmd>cprev<CR>zz')
-vim.keymap.set('n', '<leader>k', '<cmd>lnext<CR>zz')
-vim.keymap.set('n', '<leader>j', '<cmd>lprev<CR>zz')
+vim.keymap.set('n', '<C-k>', '<cmd>cnext<CR>zz', { desc = 'Next in quickfix' })
+vim.keymap.set('n', '<C-j>', '<cmd>cprev<CR>zz', { desc = 'Prev in quickfix' })
+vim.keymap.set('n', '<leader>k', '<cmd>lnext<CR>zz', { desc = 'Next in loclist' })
+vim.keymap.set('n', '<leader>j', '<cmd>lprev<CR>zz', { desc = 'Prev in loclist' })
+
+-- Cure for depression
+vim.keymap.set('n', 'Q', '<nop>')
