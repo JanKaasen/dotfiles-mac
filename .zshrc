@@ -102,6 +102,8 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias n=nvim
+alias vim=nvim
 
 # PATH exports
 export NVM_DIR="$HOME/.nvm"
@@ -114,5 +116,7 @@ export PATH=/home/jan/.local/bin:$PATH
 export PATH="$HOME/.cabal/bin:$PATH"
 export PATH="$(brew --prefix)/opt/python@3/libexec/bin:$PATH"
 [ -f "/home/jan/.ghcup/env" ] && . "/home/jan/.ghcup/env" # ghcup-env
+#export PATH="/opt/homebrew/opt/openjdk@17/bin:$PATH"
+export CPPFLAGS="-I/opt/homebrew/opt/openjdk@17/include"
+export CPPFLAGS="-I/opt/homebrew/opt/openjdk@21/include"
 export JAVA_HOME=`/usr/libexec/java_home -v 1.21`
-
