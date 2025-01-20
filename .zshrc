@@ -119,4 +119,4 @@ export PATH="$(brew --prefix)/opt/python@3/libexec/bin:$PATH"
 #export PATH="/opt/homebrew/opt/openjdk@17/bin:$PATH"
 export CPPFLAGS="-I/opt/homebrew/opt/openjdk@17/include"
 export CPPFLAGS="-I/opt/homebrew/opt/openjdk@21/include"
-export JAVA_HOME=`/usr/libexec/java_home -v 1.21`
+export JAVA_HOME=`/usr/libexec/java_home -v 17.0.13`
