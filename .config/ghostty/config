@@ -1,4 +1,6 @@
-theme = tokyonight
-font-size = 16 
+theme = gruvbox-material
+font-family = "CommitMono Nerd Font"
+font-size = 16
+background = #000000
 
 

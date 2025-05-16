@@ -104,6 +104,8 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias n=nvim
 alias vim=nvim
+alias JavaVer="/usr/libexec/java_home -V"
+alias pitest="mvn test-compile org.pitest:pitest-maven:mutationCoverage"
 
 # PATH exports
 export NVM_DIR="$HOME/.nvm"
@@ -119,4 +121,19 @@ export PATH="$(brew --prefix)/opt/python@3/libexec/bin:$PATH"
 #export PATH="/opt/homebrew/opt/openjdk@17/bin:$PATH"
 export CPPFLAGS="-I/opt/homebrew/opt/openjdk@17/include"
 export CPPFLAGS="-I/opt/homebrew/opt/openjdk@21/include"
-export JAVA_HOME=`/usr/libexec/java_home -v 17.0.13`
+export JAVA_HOME=`/usr/libexec/java_home -v 21.0.7`
+
+# Maven run main class
+mvnrun() {
+  if [ -f "pom.xml" ]; then
+    if [ "$#" -eq 0 ]; then
+      echo "Usage: mvnrun <mainClass>"
+      echo "Example: mvnrun no.uib.inf101.Main"
+      return 1
+    fi
+    mvn compile exec:java -Dexec.mainClass="$1"
+  else
+    echo "Error: No pom.xml found in current directory"
+    return 1
+  fi
+}
